@@ -1,0 +1,34 @@
+<RCC>
+    <qresource prefix="/Tsbhs">
+        <file>Resources/open.png</file>
+        <file>Resources/save.png</file>
+        <file>Resources/save1.png</file>
+        <file>Resources/exit.png</file>
+        <file>Resources/map1.png</file>
+        <file>Resources/map2.png</file>
+        <file>Resources/map3.png</file>
+        <file>Resources/map4.png</file>
+        <file>Resources/ball</file>
+        <file>Resources/home</file>
+        <file>Resources/moon</file>
+        <file>Resources/AffineEdit.png</file>
+        <file>Resources/Chord.png</file>
+        <file>Resources/Circle.png</file>
+        <file>Resources/ClosePolyLine.png</file>
+        <file>Resources/ColseArc.png</file>
+        <file>Resources/cstk.png</file>
+        <file>Resources/decreasedelta.png</file>
+        <file>Resources/EAreaMeasure.png</file>
+        <file>Resources/EClear.png</file>
+        <file>Resources/EDirectionMeasure.png</file>
+        <file>Resources/EDistanceMeasure.png</file>
+        <file>Resources/EPointMeasure.png</file>
+        <file>Resources/EProfileMeasure.png</file>
+        <file>Resources/ESetting.png</file>
+        <file>Resources/ESlopeMeasure.png</file>
+        <file>Resources/EVisibleMeasure.png</file>
+        <file>Resources/EVolumeMeasure.png</file>
+        <file>Resources/Rectangle.png</file>
+        <file>Resources/Polyline.png</file>
+    </qresource>
+</RCC>

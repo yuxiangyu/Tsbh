@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>tsbhsUI</class>
+ <widget class="QMainWindow" name="tsbhsUI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>911</width>
+    <height>646</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>XX态势标绘与推演系统</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout1">
+    <item>
+     <widget class="QTabWidget" name="Widget_1">
+      <property name="contextMenuPolicy">
+       <enum>Qt::CustomContextMenu</enum>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QTreeView" name="treeView">
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="editTriggers">
+        <set>QAbstractItemView::EditKeyPressed</set>
+       </property>
+       <attribute name="title">
+        <string>图层配置</string>
+       </attribute>
+      </widget>
+      <widget class="QTreeView" name="treeView_2">
+       <property name="editTriggers">
+        <set>QAbstractItemView::EditKeyPressed</set>
+       </property>
+       <attribute name="title">
+        <string>标绘配置</string>
+       </attribute>
+      </widget>
+      <widget class="QTreeView" name="treeView_3">
+       <property name="editTriggers">
+        <set>QAbstractItemView::EditKeyPressed</set>
+       </property>
+       <attribute name="title">
+        <string>场景配置</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>911</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="loadFile"/>
+    <addaction name="saveFile"/>
+    <addaction name="saveAsFile"/>
+    <addaction name="separator"/>
+    <addaction name="exitApp"/>
+   </widget>
+   <widget class="QMenu" name="menu11">
+    <property name="title">
+     <string>图层配置</string>
+    </property>
+    <addaction name="action_mapconfig"/>
+    <addaction name="addServiceLayer_action"/>
+    <addaction name="addImageLayer_action"/>
+    <addaction name="addVecLayer_action"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>标绘配置</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_3">
+    <property name="title">
+     <string>三维场景配置</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_4">
+    <property name="title">
+     <string>量测分析</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_5">
+    <property name="title">
+     <string>配置</string>
+    </property>
+    <addaction name="actionlayer"/>
+    <addaction name="actionbiaohui"/>
+    <addaction name="actionscene"/>
+   </widget>
+   <widget class="QMenu" name="menu_6">
+    <property name="title">
+     <string>工具</string>
+    </property>
+    <addaction name="actionmeasurement"/>
+   </widget>
+   <addaction name="menu_2"/>
+   <addaction name="menu11"/>
+   <addaction name="menu"/>
+   <addaction name="menu_3"/>
+   <addaction name="menu_4"/>
+   <addaction name="menu_5"/>
+   <addaction name="menu_6"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_mapconfig"/>
+   <addaction name="addServiceLayer_action"/>
+   <addaction name="addImageLayer_action"/>
+   <addaction name="addVecLayer_action"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea|Qt::RightDockWidgetArea|Qt::TopDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>2D_场景</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>3D_场景</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+  </widget>
+  <action name="action_mapconfig">
+   <property name="icon">
+    <iconset resource="Tsbhs.qrc">
+     <normaloff>:/Tsbhs/Resources/map1.png</normaloff>:/Tsbhs/Resources/map1.png</iconset>
+   </property>
+   <property name="text">
+    <string>底图服务配置</string>
+   </property>
+  </action>
+  <action name="addServiceLayer_action">
+   <property name="icon">
+    <iconset resource="Tsbhs.qrc">
+     <normaloff>:/Tsbhs/Resources/map2.png</normaloff>:/Tsbhs/Resources/map2.png</iconset>
+   </property>
+   <property name="text">
+    <string>加载服务图层</string>
+   </property>
+  </action>
+  <action name="addImageLayer_action">
+   <property name="icon">
+    <iconset resource="Tsbhs.qrc">
+     <normaloff>:/Tsbhs/Resources/map3.png</normaloff>:/Tsbhs/Resources/map3.png</iconset>
+   </property>
+   <property name="text">
+    <string>加载影像图层</string>
+   </property>
+  </action>
+  <action name="addVecLayer_action">
+   <property name="icon">
+    <iconset resource="Tsbhs.qrc">
+     <normaloff>:/Tsbhs/Resources/map4.png</normaloff>:/Tsbhs/Resources/map4.png</iconset>
+   </property>
+   <property name="text">
+    <string>加载矢量图层</string>
+   </property>
+  </action>
+  <action name="saveFile">
+   <property name="text">
+    <string>保存</string>
+   </property>
+  </action>
+  <action name="saveAsFile">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>另存为</string>
+   </property>
+  </action>
+  <action name="loadFile">
+   <property name="text">
+    <string>打开</string>
+   </property>
+  </action>
+  <action name="exitApp">
+   <property name="text">
+    <string>退出</string>
+   </property>
+  </action>
+  <action name="actionmeasurement">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>测量分析</string>
+   </property>
+  </action>
+  <action name="actionlayer">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>图层配置</string>
+   </property>
+  </action>
+  <action name="actionbiaohui">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>标绘配置</string>
+   </property>
+  </action>
+  <action name="actionscene">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>场景配置</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="Tsbhs.qrc"/>
+ </resources>
+ <connections/>
+</ui>
