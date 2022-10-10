@@ -87,10 +87,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="gsView.h">
+    <QtMoc Include="RtssCore.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="RtssCore.h">
+    <QtMoc Include="gsView.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

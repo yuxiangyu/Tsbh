@@ -1,11 +1,13 @@
 #include "RtssCore.h"
 #include "MapData.h"
 #include <fstream>
+#include <osgEarth/Registry>
 
 /************************************************************************/
 /*                      geo3DPSÀà                                       */
 /************************************************************************/
 geo3DPS* geo3DPS::_instance = NULL;
+
 geo3DPS::geo3DPS()
 {
 	_view = NULL;
@@ -16,7 +18,7 @@ geo3DPS::~geo3DPS()
 	//	stepper.Stop();
 	//dtCore::System::GetInstance().Stop();
 	//dtQt::DeltaStepper stepper;
-	osgEarth::Registry::instance()->unRefImageDataAfterApply() = false;
+	//osgEarth::Registry::instance()->unRefImageDataAfterApply() = false;
 }
 
 //gsView* geo3DPS::getView(bool show3d)

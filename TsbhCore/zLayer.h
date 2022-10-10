@@ -1,7 +1,6 @@
 #pragma once
 #include "rtsscore_global.h"
-#include <simVis/Utils.h>
-
+#include <string>
 
 class RTSSCORE_EXPORT zLayer 
 {

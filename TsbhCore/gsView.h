@@ -23,6 +23,7 @@
 #include "zlayer.h"
 #include <osgEarth/EarthManipulator>
 #include <osgEarth/MapNode>
+#include <osgViewer/View>
 
 using namespace osg;
 

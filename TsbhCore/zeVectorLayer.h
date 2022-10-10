@@ -4,6 +4,7 @@
 //#include <dtCore/object.h>
 #include <QtCore/qstring.h>
 #include <QtCore/qlist.h>
+#include <osg/Vec3f>
 
 
 class RTSSCORE_EXPORT zeVectorLayer : public zLayer

@@ -123,7 +123,10 @@
     <ClInclude Include="zMapEntity.h" />
     <ClInclude Include="SysConst.h" />
     <ClInclude Include="transcoder.h" />
-    <QtMoc Include="gsView.h" />
+    <QtMoc Include="gsView.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(third)\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtOpenGL</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(third)\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtOpenGL</IncludePath>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
