@@ -266,8 +266,8 @@ void Tsbhs::create3Dmap() {
 
 //	geo3dps->getView()->get3DScene()->addEventHandler(tsbhplot_3d);
 	//geo3dps->getView()->get3DScene()->inser
-	//QWidget* viewWidget2 = new simQt::ViewWidget(geo3dps->getView()->get2DScene());
-	//ui.dockWidget->setWidget(viewWidget2);
+	QWidget* viewWidget2 = new ViewerWidget2(geo3dps->getInstance()->getView()->get2DScene());
+	ui.dockWidget->setWidget(viewWidget2);
 
 	//2d±ê»æ
 	//tsbhplot_2d = new TsbhPlot(geo3dps->getView()->get2DScene());

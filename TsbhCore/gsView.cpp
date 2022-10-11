@@ -154,6 +154,9 @@ void gsView::initEarth()
 	mainip3d->getSettings()->setMinMaxPitch(-90, -10);
     mainip3d->getSettings()->setMinMaxDistance(30.0, DBL_MAX);
 	mainip3d->getSettings()->bindMouse(EarthManipulator::ACTION_ROTATE, osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON);
+	mainip3d->getSettings()->bindScroll(EarthManipulator::ACTION_ZOOM_IN, osgGA::GUIEventAdapter::SCROLL_UP);
+	mainip3d->getSettings()->bindScroll(EarthManipulator::ACTION_ZOOM_OUT, osgGA::GUIEventAdapter::SCROLL_DOWN);
+	
 	viewer3d->setCameraManipulator(mainip3d);
 	viewer3d->setSceneData(viewer3dNode);
 	//viewer3d->installDebugHandlers();
@@ -268,14 +271,14 @@ void gsView::make2dMap()
 	//map->removeLayer(map->getLayerAt(0));
 	map->setCache(osgEarth::CacheFactory::create(cacheOptions));
 
-#if 1
+#if 0
 	MBTilesImageLayer* osm = new MBTilesImageLayer();
 	osm->setName("Whole Earth");
 	osm->setURL("resources/textures/lowResEarth.mbtiles");
 	//osm->setProfile(Profile::create("spherical-mercator"));
 #endif
 
-#if 0
+#if 1
 	// add a semi-transparent XYZ layer:
 	XYZImageLayer* osm = new XYZImageLayer();
 	osm->setName("osm");
@@ -340,14 +343,15 @@ void gsView::make2dMap()
 	//viewer2d->setUseOverheadClamping(true);
 	//viewer2d->setNavigationMode(simVis::NAVMODE_GIS);
 	mainip2d = new osgEarth::EarthManipulator();
-	mainip2d->getSettings()->setMinMaxPitch(-90, -90);
-	mainip2d->getSettings()->setMinMaxDistance(0, 17000000);
+	mainip2d->getSettings()->setMinMaxPitch(-90, -60);
+	//mainip2d->getSettings()->setMinMaxDistance(0, 17000000);
 	//mainip2d->getSettings()->setMaxOffset(60.0, 70.0);
 	//mainip2d->getSettings()->bindScroll(osgEarth::Util::EarthManipulator::ActionType::ACTION_ZOOM_IN, osgGA::GUIEventAdapter::SCROLL_UP);
 	//mainip2d->getSettings()->bindScroll(osgEarth::Util::EarthManipulator::ActionType::ACTION_ZOOM_OUT, osgGA::GUIEventAdapter::SCROLL_DOWN);
 	mainip2d->getSettings()->bindMouse(EarthManipulator::ACTION_ROTATE, osgGA::GUIEventAdapter::RIGHT_MOUSE_BUTTON);
 	mainip2d->getSettings()->setThrowingEnabled(true);
-	//_settings->bindScroll(ACTION_ZOOM_OUT, osgGA::GUIEventAdapter::SCROLL_UP);
+	mainip2d->getSettings()->bindScroll(EarthManipulator::ACTION_ZOOM_IN, osgGA::GUIEventAdapter::SCROLL_UP);
+	mainip2d->getSettings()->bindScroll(EarthManipulator::ACTION_ZOOM_OUT, osgGA::GUIEventAdapter::SCROLL_DOWN);
 	viewer2d->setCameraManipulator(mainip2d);
 	viewer2d->addEventHandler(new osgViewer::LODScaleHandler);
 	
@@ -365,7 +369,7 @@ void gsView::make2dMap()
 	viewer2d->getCamera()->setProjectionMatrixAsOrtho2D(MERC_MINX, MERC_MAXX, MERC_MINY, MERC_MAXY);
 
 	//osgEarth::Viewpoint vp("current2d", 101.84, 35.65, 1000, 0.0, -90.0, 4000000);
-	osgEarth::Viewpoint vp("current2d", 114.28, 31.12, 1000, 0.0, -90.0, 6000);
+	osgEarth::Viewpoint vp("current2d", 114.28, 31.12, 1000, 0.0, -90.0, 600000);
 	mainip2d->setViewpoint(vp);
 	group2d = new osg::Group();
 	viewer2dNode->addChild(group2d);
