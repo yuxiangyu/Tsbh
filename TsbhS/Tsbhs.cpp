@@ -258,7 +258,7 @@ void Tsbhs::createBiaohuiTools() {
 void Tsbhs::create3Dmap() {
 
 
-	QWidget* viewWidget = new ViewerWidget2(geo3dps->getView()->get3DScene());
+	QWidget* viewWidget = new ViewerWidget2(geo3dps->getInstance()->getView()->get3DScene());
 	ui.dockWidget_2->setWidget(viewWidget);
 	//lastCreatedGlWindow_ = viewWidget->windowHandle();
 	//3d±ê»æ

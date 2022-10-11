@@ -15,7 +15,7 @@
 
 class ViewerWidget2 : public QWidget, public osgViewer::CompositeViewer
 {
-	Q_OBJECT
+	
 public:
 	ViewerWidget2(osgViewer::View* view,QWidget* parent = 0, Qt::WindowFlags f = 0, osgViewer::ViewerBase::ThreadingModel threadingModel = osgViewer::CompositeViewer::SingleThreaded) : QWidget(parent, f)
 	{
@@ -26,8 +26,10 @@ public:
 		setQuitEventSetsDone(false);
 		QWidget* widget1 = addViewWidget(createGraphicsWindow(0, 0, 100, 100), view);
 		
-
-		this->layout()->addWidget(widget1);
+		QVBoxLayout* layout=new QVBoxLayout();
+		layout->addWidget(widget1);
+		setLayout(layout);
+		
 
 		connect(&_timer, SIGNAL(timeout()), this, SLOT(update()));
 		_timer.start(10);
@@ -42,7 +44,7 @@ public:
 		camera->setGraphicsContext(gw);
 
 		const osg::GraphicsContext::Traits* traits = gw->getTraits();
-
+		camera->setClearColor(osg::Vec4f(0., 0., 0., 0.8));
 		camera->setViewport(new osg::Viewport(0, 0, gw->getTraits()->width, gw->getTraits()->height));
 		if (gw->getTraits()->height != 0)
 			camera->setProjectionMatrixAsPerspective(30.0f, gw->getTraits()->width / gw->getTraits()->height, 1.0f, 10000.0f);

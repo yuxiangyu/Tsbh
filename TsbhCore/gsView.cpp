@@ -128,7 +128,7 @@ void gsView::initEarth()
 
 	MBTilesImageLayer* baseLayer = new MBTilesImageLayer();
 	baseLayer->setName("Whole Earth");
-	baseLayer->setURL("resources/textures/lowResEarth.mbtiles");
+	baseLayer->setURL("resources/lowResEarth.mbtiles");
 	map->addLayer(baseLayer);
 	
 	viewer3d = new osgViewer::View();
@@ -167,7 +167,7 @@ void gsView::initEarth()
 	skyOptions.ambient() = 0.5f;
 	skyOptions.exposure() = 2.0f;
 	//sceneMan_3d->setSkyNode(osgEarth::SkyNode::create(skyOptions));
-	osgEarth::insertGroup(osgEarth::SkyNode::create(skyOptions), viewer3dNode);
+	osgEarth::insertGroup(osgEarth::SkyNode::create(skyOptions), viewer3dNode->getParent(0));
 	viewer3d->getCamera()->addCullCallback(new osgEarth::Util::AutoClipPlaneCullCallback(viewer3dNode));
 	osgEarth::Viewpoint vp("current", 116.4, 39.5, 0.0, 0.0, -90.0, 10000000);
 	mainip3d->setViewpoint(vp);
