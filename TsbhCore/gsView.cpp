@@ -274,7 +274,7 @@ void gsView::make2dMap()
 #if 0
 	MBTilesImageLayer* osm = new MBTilesImageLayer();
 	osm->setName("Whole Earth");
-	osm->setURL("resources/textures/lowResEarth.mbtiles");
+	osm->setURL("resources/lowResEarth.mbtiles");
 	//osm->setProfile(Profile::create("spherical-mercator"));
 #endif
 
@@ -973,3 +973,30 @@ osgViewer::View* gsView::get3DScene_2()
 	return viewer3d_2;
 }
 
+void gsView::enable2D3DLinkage()
+{
+	if (nullptr == mainip3d || nullptr == mainip2d)
+	{
+		return;
+	}
+	if (nullptr == dargHandle_2d)
+	{
+		dargHandle_2d = new Darg2Dto3DHandle(mainip3d);
+	}
+	if (nullptr == dargHandle_3d)
+	{
+		dargHandle_3d = new Darg2Dto3DHandle(mainip2d);
+	}
+	
+	viewer2d->addEventHandler(dargHandle_2d);
+	viewer3d->addEventHandler(dargHandle_3d);
+}
+
+void gsView::disable2D3DLinkage()
+{
+	if (nullptr != dargHandle_2d && nullptr != dargHandle_3d)
+	{
+		viewer2d->removeEventHandler(dargHandle_2d);
+		viewer3d->removeEventHandler(dargHandle_3d);
+	}
+}

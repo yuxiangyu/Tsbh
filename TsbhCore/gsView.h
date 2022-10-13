@@ -85,7 +85,9 @@ public:
 	osg::Group* get3dGroup_2() { return targetGroup_3D_2; }
 	osg::LOD* getLod_2() { return lod_3d_2; }
 
-
+	// 二维三维联动
+	void enable2D3DLinkage();
+	void disable2D3DLinkage();
 private:
 	//初始化三维地图-大场景
 	void initEarth();
@@ -141,5 +143,9 @@ private:
 	//osg::ref_ptr<simVis::ViewManager>   viewMan_3d_2;
 	//osg::ref_ptr<simVis::SceneManager>  sceneMan_3d_2;
 	osg::LOD*							lod_3d_2;
+
+	// 二三维联动handle
+	osg::ref_ptr<Darg2Dto3DHandle> dargHandle_2d = nullptr;
+	osg::ref_ptr<Darg2Dto3DHandle> dargHandle_3d = nullptr;
 };
 
