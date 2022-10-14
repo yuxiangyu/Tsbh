@@ -270,7 +270,6 @@ void gsView::make2dMap()
 	cacheOptions.rootPath() = "cache2d";
 	//map->removeLayer(map->getLayerAt(0));
 	map->setCache(osgEarth::CacheFactory::create(cacheOptions));
-
 #if 0
 	MBTilesImageLayer* osm = new MBTilesImageLayer();
 	osm->setName("Whole Earth");
@@ -343,7 +342,7 @@ void gsView::make2dMap()
 	//viewer2d->setUseOverheadClamping(true);
 	//viewer2d->setNavigationMode(simVis::NAVMODE_GIS);
 	mainip2d = new osgEarth::EarthManipulator();
-	mainip2d->getSettings()->setMinMaxPitch(-90, -60);
+	mainip2d->getSettings()->setMinMaxPitch(-90, -30);
 	//mainip2d->getSettings()->setMinMaxDistance(0, 17000000);
 	//mainip2d->getSettings()->setMaxOffset(60.0, 70.0);
 	//mainip2d->getSettings()->bindScroll(osgEarth::Util::EarthManipulator::ActionType::ACTION_ZOOM_IN, osgGA::GUIEventAdapter::SCROLL_UP);
@@ -987,7 +986,7 @@ void gsView::enable2D3DLinkage()
 	{
 		dargHandle_3d = new Darg2Dto3DHandle(mainip2d);
 	}
-	
+
 	viewer2d->addEventHandler(dargHandle_2d);
 	viewer3d->addEventHandler(dargHandle_3d);
 }
@@ -1000,3 +999,4 @@ void gsView::disable2D3DLinkage()
 		viewer3d->removeEventHandler(dargHandle_3d);
 	}
 }
+

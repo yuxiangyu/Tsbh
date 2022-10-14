@@ -6,7 +6,8 @@
 #include <QtWidgets/QTreeView>
 #include "zLayer.h"
 #include "ui_Tsbhs.h"
-//#include "TsbhPlot.h"
+
+#include "TsbhPlot.h"
 
 class Tsbhs :  public QMainWindow
 {
@@ -21,7 +22,7 @@ private:
 	geo3DPS* geo3dps;
 	////±àÂë
 	QTextCodec* code;
-	//TsbhPlot* tsbhplot_3d;
+	TsbhPlot* tsbhplot_3d;
 	//TsbhPlot* tsbhplot_2d;
 	int framerate;
 	QTimer*                             timer_;

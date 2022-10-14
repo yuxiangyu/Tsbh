@@ -8,6 +8,8 @@
 #include "ViewWidget.h"
 #include "moc_gsView.cpp"
 #include "moc_RtssCore.cpp"
+#include "DrawLineTool.h"
+#include "PlotStyle.h"
 //#include "DrawTool.h"
 
 
@@ -15,7 +17,7 @@ Tsbhs::Tsbhs(QWidget *parent) : QMainWindow(parent)
 
 {
 	ui.setupUi(this);
-
+	k = 0.0;
 
 	QIcon* ico = new QIcon("icon1.ico");
 	framerate = 20;
@@ -70,6 +72,7 @@ void Tsbhs::closeEvent(QCloseEvent *event)
 	//disconnect(timer_, SIGNAL(timeout()), this, SLOT(update()));
 	
 	delete ui.dockWidget_2->widget();
+	delete ui.dockWidget->widget();
 	delete geo3dps;
 	geo3dps = NULL;
 }
@@ -178,7 +181,7 @@ void Tsbhs::showmessage(QString message)
 void Tsbhs::on_biaohui_triggered() {
 
 	//geo3dps->getView()->addVideo();
-	/*PlotStyle *style = new PlotStyle();
+	PlotStyle *style = new PlotStyle();
 	QAction *a5 = (QAction *)sender();
 
 	if (currentBiaoHui) {
@@ -197,6 +200,9 @@ void Tsbhs::on_biaohui_triggered() {
 	else if (a5->text() == QStringLiteral("ÕÛÏß"))
 	{
 		style->type = DrawTool::DrawType::DRAW_LINE;
+		DrawLineTool* tool = new DrawLineTool(geo3dps->getView()->get3DSceneMapNode(),geo3dps->getView()->get3dGroup());
+		
+		tsbhplot_3d->setPlot(style);
 	}
 	else if (a5->text() == QStringLiteral("Ô²"))
 	{
@@ -223,8 +229,8 @@ void Tsbhs::on_biaohui_triggered() {
 		style->type = DrawTool::DrawType::DRAW_CIRCLE;
 	}
 
-	tsbhplot_3d->setPlot(style);
-*/
+	//tsbhplot_3d->setPlot(style);
+
 	
 }
 
@@ -262,8 +268,8 @@ void Tsbhs::create3Dmap() {
 	ui.dockWidget_2->setWidget(viewWidget);
 	//lastCreatedGlWindow_ = viewWidget->windowHandle();
 	//3d±ê»æ
-	//tsbhplot_3d = new TsbhPlot(geo3dps->getView()->get3DScene());
-
+	tsbhplot_3d = new TsbhPlot(geo3dps->getInstance()->getView()->get3DScene(), geo3dps->getInstance()->getView()->get3DSceneMapNode());
+	geo3dps->getView()->get3DScene()->addEventHandler(tsbhplot_3d);
 //	geo3dps->getView()->get3DScene()->addEventHandler(tsbhplot_3d);
 	//geo3dps->getView()->get3DScene()->inser
 	QWidget* viewWidget2 = new ViewerWidget2(geo3dps->getInstance()->getView()->get2DScene());
@@ -302,7 +308,8 @@ void Tsbhs::paintEvent(QPaintEvent* e)
 	// can safely draw on all windows.
 	if (!lastCreatedGlWindow_ || lastCreatedGlWindow_->isExposed())
 	{
-		//geo3dps->getView()->get2DScene()->getViewManager()->frame();
+		ViewerWidget2* viewWidget = dynamic_cast<ViewerWidget2*>(ui.dockWidget_2->widget());
+		viewWidget->frame(k);
 		//geo3dps->getInstance()->getView()->get3DScene();
 		//qDebug() << "fffff";
 		k += 0.001;

@@ -88,6 +88,10 @@ public:
 	// 二维三维联动
 	void enable2D3DLinkage();
 	void disable2D3DLinkage();
+
+	osgEarth::MapNode* get3DSceneMapNode() { return viewer3dNode; }
+	osgEarth::MapNode* get2DSceneMapNode() { return viewer2dNode; }
+
 private:
 	//初始化三维地图-大场景
 	void initEarth();
@@ -116,6 +120,7 @@ private:
 	osg::ref_ptr<osgEarth::MapNode> viewer3dNode;
 	osg::ref_ptr<osgViewer::View> viewer2d;
 	osg::ref_ptr<osgEarth::MapNode> viewer2dNode;
+
 	osgEarth::EarthManipulator* mainip3d;
 	osgEarth::EarthManipulator* mainip2d;
 	//osg::ref_ptr<simVis::ViewManager>   viewMan_3d;
