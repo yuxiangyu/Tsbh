@@ -6,6 +6,7 @@
 #include "GeoDiagonalArrow.h"
 #include "geodoublearrow.h"
 #include "GeoStraightArrow.h"
+#include "DrawCircleTool.h"
 #include <osgEarth/GLUtils>
 //...
 
@@ -42,7 +43,15 @@ void TsbhPlot::setPlot(PlotStyle* plot)
 		{
 			switch (plot->type)
 			{
-
+			case DrawTool::DrawType::PLACE_MARK:
+				break;
+			case DrawTool::DrawType::DRAW_CIRCLE:
+				this->currentHandler = new DrawCircleTool(_node, group3dplot);
+				break;
+			case DrawTool::DrawType::DRAW_GATHERINGPLACE:
+				break;
+			case DrawTool::DrawType::DRAW_GEOLUNE:
+				break;
 			case DrawTool::DrawType::DRAW_LINE:
 				this->currentHandler = new DrawLineTool(_node, group3dplot);
 				break;
@@ -69,8 +78,10 @@ void TsbhPlot::setPlot(PlotStyle* plot)
 				break;
 			}
 		}
-		view->addEventHandler(this->currentHandler);
-	
+		if (this->currentHandler)
+		{
+			view->addEventHandler(this->currentHandler);
+		}
 }
 
 bool TsbhPlot::handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapter& aa)

@@ -113,6 +113,7 @@
      <string>工具</string>
     </property>
     <addaction name="actionmeasurement"/>
+    <addaction name="action2D3Dlink"/>
    </widget>
    <addaction name="menu_2"/>
    <addaction name="menu11"/>
@@ -266,6 +267,14 @@
    </property>
    <property name="text">
     <string>场景配置</string>
+   </property>
+  </action>
+  <action name="action2D3Dlink">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>二三维联动</string>
    </property>
   </action>
  </widget>

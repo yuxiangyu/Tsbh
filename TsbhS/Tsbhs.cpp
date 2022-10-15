@@ -200,9 +200,7 @@ void Tsbhs::on_biaohui_triggered() {
 	else if (a5->text() == QStringLiteral("折线"))
 	{
 		style->type = DrawTool::DrawType::DRAW_LINE;
-		DrawLineTool* tool = new DrawLineTool(geo3dps->getView()->get3DSceneMapNode(),geo3dps->getView()->get3dGroup());
-		
-		tsbhplot_3d->setPlot(style);
+		//DrawLineTool* tool = new DrawLineTool(geo3dps->getView()->get3DSceneMapNode(),geo3dps->getView()->get3dGroup());
 	}
 	else if (a5->text() == QStringLiteral("圆"))
 	{
@@ -224,12 +222,8 @@ void Tsbhs::on_biaohui_triggered() {
 	{
 		style->type = DrawTool::DrawType::DRAW_GEOLUNE;
 	}
-	else if (a5->text() == QStringLiteral("圆"))
-	{
-		style->type = DrawTool::DrawType::DRAW_CIRCLE;
-	}
 
-	//tsbhplot_3d->setPlot(style);
+	tsbhplot_3d->setPlot(style);
 
 	
 }
@@ -437,5 +431,18 @@ void Tsbhs::maptreeItem_CheckChildChanged(QStandardItem* item)
 		zLayer* zlayer = geo3dps->getLayer(nodename);
 		zlayer->setShowing(state);
 		emit updateLayer(zlayer);
+	}
+}
+
+//二三维同步
+void Tsbhs::on_action2D3Dlink_triggered()
+{
+	if (ui.action2D3Dlink->isChecked())
+	{
+		geo3dps->getInstance()->getView()->enable2D3DLinkage();
+	}
+	else
+	{
+		geo3dps->getInstance()->getView()->disable2D3DLinkage();
 	}
 }

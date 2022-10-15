@@ -72,6 +72,8 @@ public slots:
 	void on_biaohui_triggered();
 	void maptreeItem_CheckChildChanged(QStandardItem*);
 	void showmessage(QString message);
+
+	void on_action2D3Dlink_triggered();
 protected:
 	virtual void paintEvent(QPaintEvent* e);
 	void showMapLayerProperties(string nodename);
