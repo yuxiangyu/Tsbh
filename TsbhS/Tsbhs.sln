@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TsbhCore", "..\TsbhCore\Tsb
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TsbhPlot", "..\TsbhPlot\TsbhPlot.vcxproj", "{EE56D459-75E9-4DEE-9049-A4491D1D3D96}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TsbhTools", "..\TsbhTools\TsbhTools.vcxproj", "{78720B85-1CC7-4703-BE97-E2C24AFF90C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -30,12 +32,16 @@ Global
 		{EE56D459-75E9-4DEE-9049-A4491D1D3D96}.Debug|x64.Build.0 = Debug|x64
 		{EE56D459-75E9-4DEE-9049-A4491D1D3D96}.Release|x64.ActiveCfg = Release|x64
 		{EE56D459-75E9-4DEE-9049-A4491D1D3D96}.Release|x64.Build.0 = Release|x64
+		{78720B85-1CC7-4703-BE97-E2C24AFF90C4}.Debug|x64.ActiveCfg = Debug|x64
+		{78720B85-1CC7-4703-BE97-E2C24AFF90C4}.Debug|x64.Build.0 = Debug|x64
+		{78720B85-1CC7-4703-BE97-E2C24AFF90C4}.Release|x64.ActiveCfg = Release|x64
+		{78720B85-1CC7-4703-BE97-E2C24AFF90C4}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {51D45636-DD83-461D-A2D3-8106C9E34511}
 		Qt5Version = 5.7_msvc2015_64
+		SolutionGuid = {51D45636-DD83-461D-A2D3-8106C9E34511}
 	EndGlobalSection
 EndGlobal
