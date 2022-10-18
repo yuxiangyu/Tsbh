@@ -6,7 +6,7 @@
 #include <QtWidgets/QTreeView>
 #include "zLayer.h"
 #include "ui_Tsbhs.h"
-
+#include "toolhandle.h"
 #include "TsbhPlot.h"
 
 class Tsbhs :  public QMainWindow
@@ -23,7 +23,7 @@ private:
 	////±àÂë
 	QTextCodec* code;
 	TsbhPlot* tsbhplot_3d;
-	//TsbhPlot* tsbhplot_2d;
+	ToolHandle* tsbhtool_3d;
 	int framerate;
 	QTimer*                             timer_;
 	//osg::ref_ptr<simVis::ViewManager>   viewMan_;

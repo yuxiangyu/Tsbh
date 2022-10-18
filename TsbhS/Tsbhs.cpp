@@ -10,7 +10,8 @@
 #include "moc_RtssCore.cpp"
 #include "DrawLineTool.h"
 #include "PlotStyle.h"
-//#include "DrawTool.h"
+#include "MeasureArea.h"
+#include "toolhandle.h"
 
 
 Tsbhs::Tsbhs(QWidget *parent) : QMainWindow(parent)
@@ -200,7 +201,9 @@ void Tsbhs::on_biaohui_triggered() {
 	else if (a5->text() == QStringLiteral("折线"))
 	{
 		style->type = DrawTool::DrawType::DRAW_LINE;
-		//DrawLineTool* tool = new DrawLineTool(geo3dps->getView()->get3DSceneMapNode(),geo3dps->getView()->get3dGroup());
+		DrawLineTool* tool = new DrawLineTool(geo3dps->getView()->get3DSceneMapNode(),geo3dps->getView()->get3dGroup());
+		tsbhplot_3d->setPlot(style);
+		return;
 	}
 	else if (a5->text() == QStringLiteral("圆"))
 	{
@@ -208,7 +211,13 @@ void Tsbhs::on_biaohui_triggered() {
 	}
 	else if (a5->text() == QStringLiteral("多边形"))
 	{
-		style->type = DrawTool::DrawType::DRAW_POLYGON;
+		//测试面积量测
+		//style->type = DrawTool::DrawType::DRAW_POLYGON;
+		MeasureArea *aa = new MeasureArea(geo3dps->getView()->get3dGroup(), geo3dps->getView()->get3DSceneMapNode());
+		//tsbhplot_3d2->setPlot(style);
+
+		tsbhtool_3d->setTool(aa);
+		return;
 	}
 	else if (a5->text() == QStringLiteral("矩形"))
 	{
@@ -223,7 +232,7 @@ void Tsbhs::on_biaohui_triggered() {
 		style->type = DrawTool::DrawType::DRAW_GEOLUNE;
 	}
 
-	tsbhplot_3d->setPlot(style);
+	
 
 	
 }
@@ -264,8 +273,10 @@ void Tsbhs::create3Dmap() {
 	//3d标绘
 	tsbhplot_3d = new TsbhPlot(geo3dps->getInstance()->getView()->get3DScene(), geo3dps->getInstance()->getView()->get3DSceneMapNode());
 	geo3dps->getView()->get3DScene()->addEventHandler(tsbhplot_3d);
-//	geo3dps->getView()->get3DScene()->addEventHandler(tsbhplot_3d);
-	//geo3dps->getView()->get3DScene()->inser
+
+	tsbhtool_3d = new ToolHandle(geo3dps->getInstance()->getView()->get3DScene(), geo3dps->getInstance()->getView()->get3DSceneMapNode());
+
+	geo3dps->getView()->get3DScene()->addEventHandler(tsbhtool_3d);
 	QWidget* viewWidget2 = new ViewerWidget2(geo3dps->getInstance()->getView()->get2DScene());
 	ui.dockWidget->setWidget(viewWidget2);
 

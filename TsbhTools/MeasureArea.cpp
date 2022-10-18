@@ -30,8 +30,8 @@ void  MeasureArea::onDoubleClick(GeoPoint* Point)
 	//{
 	//	 return;
 	//}
-	addPoint(Point);
-	renderCircleNode(Point);
+	//addPoint(Point);
+	//renderCircleNode(Point);
 	this->m_bFinish = true;
 }
 
