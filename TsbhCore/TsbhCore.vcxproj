@@ -98,8 +98,11 @@
     </QtMoc>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Angle.cpp" />
     <ClCompile Include="astro.cpp" />
+    <ClCompile Include="Format1.cpp" />
     <ClCompile Include="MapData.cpp" />
+    <ClCompile Include="Math1.cpp" />
     <ClCompile Include="QinxieModelLoader.cpp" />
     <ClCompile Include="RtssCore.cpp" />
     <ClCompile Include="SysConst.cpp" />
@@ -110,14 +113,19 @@
     <ClCompile Include="zMapEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Angle.h" />
     <ClInclude Include="astro.h" />
+    <ClInclude Include="Format1.h" />
     <ClInclude Include="MapData.h" />
+    <ClInclude Include="math1.h" />
+    <ClInclude Include="MathConstants.h" />
     <ClInclude Include="QinxieModelLoader.h" />
     <QtMoc Include="RtssCore.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(third)\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtOpenGL</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(third)\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtOpenGL</IncludePath>
     </QtMoc>
     <ClInclude Include="rtsscore_global.h" />
+    <ClInclude Include="Vec3.h" />
     <ClInclude Include="zeVectorLayer.h" />
     <ClInclude Include="zLayer.h" />
     <ClInclude Include="zMapEntity.h" />
