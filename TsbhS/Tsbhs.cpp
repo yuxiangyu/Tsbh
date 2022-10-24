@@ -12,6 +12,7 @@
 #include "PlotStyle.h"
 #include "MeasureArea.h"
 #include "toolhandle.h"
+#include "animationLineNode.h"
 
 
 Tsbhs::Tsbhs(QWidget *parent) : QMainWindow(parent)
@@ -285,7 +286,32 @@ void Tsbhs::create3Dmap() {
 	//geo3dps->getView()->get2DScene()->addEventHandler(tsbhplot_2d);
 	//addDockWidget(Qt::RightDockWidgetArea, m2d_view);
 	//tabifyDockWidget(ui.dockWidget, ui.dockWidget_2);
+	
 
+	//zLayer* layerService2 = new zLayer();
+	//layerService2->filePath = "http://localhost/qgis/qgis_mapserv.fcgi.exe";
+	//layerService2->layers = "world_polygon";
+	//layerService2->name = "world_polygon";
+	//layerService2->type = 0;  //1为二维  0为三维
+	//layerService2->layerType = 0;
+	//geo3dps->getView()->addLayer(layerService2);
+
+	//zLayer* layerService = new zLayer();
+	//layerService->filePath = "http://localhost/qgis/qgis_mapserv.fcgi.exe";
+	//layerService->layers = "county_polyline";
+	//layerService->name = "county_polyline";
+	//layerService->type = 0;  //1为二维  0为三维
+	//layerService->layerType = 0;
+	//geo3dps->getView()->addLayer(layerService);
+	//创建运动线
+	osg::ref_ptr<AnimatedLineNode> line = new AnimatedLineNode();
+	line->setEndPoints(GeoPoint(geo3dps->getInstance()->getView()->get3DSceneMapNode()->getMapSRS()->getGeographicSRS(),94,30,10000),
+		GeoPoint(geo3dps->getInstance()->getView()->get3DSceneMapNode()->getMapSRS()->getGeographicSRS(), 124, 30, 10000));
+	line->setColor1(osgEarth::Color::Red); // orange
+	line->setColor2(osg::Vec4());   // transparent
+	line->setShiftsPerSecond(-30.0);
+	line->setLineWidth(2);
+	geo3dps->getInstance()->getView()->get3dGroup()->addChild(line);
 }
 
 //窗体改变大小事件

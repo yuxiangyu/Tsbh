@@ -8,6 +8,7 @@
 #include "TsbhSim_global.h"
 #include "MultiFrameCoordinate.h"
 #include "Locator.h"
+#include <osgEarth/GeoPositionNode>
 
 namespace osgEarth { class LineDrawable; }
 
@@ -34,7 +35,7 @@ namespace osgEarth { class LineDrawable; }
 		* @param[in ] second Second endpoint; can be in world or local coords.
 		*/
 		void setEndPoints(const Coordinate& first, const Coordinate& second);
-
+		void setEndPoints(const osgEarth::GeoPoint& first, const osgEarth::GeoPoint& second);
 		/**
 		* Sets the endpoints to a Locator and a fixed coordinate.
 		* @param[in ] first  Locator

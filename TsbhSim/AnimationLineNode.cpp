@@ -14,8 +14,9 @@
 #include "Locator.h"
 //#include "simVis/OverheadMode.h"
 //#include "simVis/Types.h"
-//#include "simVis/Utils.h"
+#include "angle.h"
 #include "AnimationLineNode.h"
+
 
 #define LC "[AnimatedLine] "
 
@@ -128,6 +129,19 @@
 		secondLocator_ = nullptr;
 		// Assertion failure means bad input from developer for setting initial endpoint
 		assert(firstCoord_->isValid());
+	}
+
+	void AnimatedLineNode::setEndPoints(const osgEarth::GeoPoint& first, const osgEarth::GeoPoint& second)
+	{
+		Coordinate coord1(
+			COORD_SYS_LLA,
+			SimVec3(DEG2RAD *first.y(), DEG2RAD*first.x(), first.alt()));
+
+		Coordinate coord2(
+			COORD_SYS_LLA,
+			SimVec3(DEG2RAD*second.y(), DEG2RAD*second.x(), second.alt()));
+
+		setEndPoints(coord1, coord2);
 	}
 
 	void AnimatedLineNode::setEndPoints(const Locator* first, const Coordinate& second)
