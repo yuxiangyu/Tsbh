@@ -182,3 +182,20 @@ std::vector<std::string> CSysConst::vStringSplit(std::string& s, std::string del
 	}
 	return elems;
 }
+
+void CSysConst::lonlatToMercator(double lon, double lat, double &mercx, double &mercy)
+{
+
+	mercx = lon * 20037508.34 / 180;
+	mercy = std::log(std::tan((90 + lat) * CSysConst::ORB_PI / 360)) / (CSysConst::ORB_PI / 180);
+	mercy = mercy * 20037508.34 / 180;
+}
+
+void CSysConst::mercatorTolonlat(double mercx, double mercy, double &lon, double &lat)
+{
+
+	lon = mercx / 20037508.34 * 180;
+	lat = mercy / 20037508.34 * 180;
+
+	lat = 180 / CSysConst::ORB_PI * (2 * std::atan(std::exp(lat*CSysConst::ORB_PI / 180)) - CSysConst::ORB_PI / 2);
+}

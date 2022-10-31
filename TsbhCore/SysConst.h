@@ -121,6 +121,8 @@ public:
 	//经纬度到墨卡托坐标转换
 	static void llToMokatuo(double lon,double lat,float &x,float &y);
 	static void MokatuoToll(double x, double y, float &lon, float &lat);
+	static void lonlatToMercator(double lon, double lat, double &mercx, double &mercy);
+	static void mercatorTolonlat(double mercx, double mercy, double &lon, double &lat);
 	static std::vector<std::string> vStringSplit(std::string& s,std::string delim);
 };
 // namespace CSTK

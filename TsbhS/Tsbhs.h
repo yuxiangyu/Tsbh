@@ -24,6 +24,7 @@ private:
 	QTextCodec* code;
 	TsbhPlot* tsbhplot_3d;
 	ToolHandle* tsbhtool_3d;
+	TsbhPlot* tsbhplot_2d;
 	int framerate;
 	QTimer*                             timer_;
 	//osg::ref_ptr<simVis::ViewManager>   viewMan_;

@@ -94,6 +94,8 @@ public:
 
 	struct NodeInfo getNodeinfos();
 
+	bool &isMercator() { return _bMercator; }
+
 public:
     // 获取点所在地理坐标
     bool getLocationAt(osgViewer::View* view, double x, double y, double& lon, double& lat, double& alt);
@@ -123,6 +125,7 @@ protected:
     osg::ref_ptr<osgEarth::PlaceNode> _coordPn;
 	osg::Vec3d _pos;
 	DrawCommand *m_command = nullptr;
+	bool _bMercator = false; // 是否为墨卡托坐标
 };
 
 

@@ -203,7 +203,7 @@ void Tsbhs::on_biaohui_triggered() {
 	{
 		style->type = DrawTool::DrawType::DRAW_LINE;
 		DrawLineTool* tool = new DrawLineTool(geo3dps->getView()->get3DSceneMapNode(),geo3dps->getView()->get3dGroup());
-		tsbhplot_3d->setPlot(style);
+		tsbhplot_2d->setPlot(style);
 		return;
 	}
 	else if (a5->text() == QStringLiteral("Ô²"))
@@ -278,8 +278,11 @@ void Tsbhs::create3Dmap() {
 	tsbhtool_3d = new ToolHandle(geo3dps->getInstance()->getView()->get3DScene(), geo3dps->getInstance()->getView()->get3DSceneMapNode());
 
 	geo3dps->getView()->get3DScene()->addEventHandler(tsbhtool_3d);
+
 	QWidget* viewWidget2 = new ViewerWidget2(geo3dps->getInstance()->getView()->get2DScene());
 	ui.dockWidget->setWidget(viewWidget2);
+	tsbhplot_2d = new TsbhPlot(geo3dps->getInstance()->getView()->get2DScene(), geo3dps->getInstance()->getView()->get2DSceneMapNode(),true);
+	geo3dps->getView()->get2DScene()->addEventHandler(tsbhplot_2d);
 
 	//2d±ê»æ
 	//tsbhplot_2d = new TsbhPlot(geo3dps->getView()->get2DScene());

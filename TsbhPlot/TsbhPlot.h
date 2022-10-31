@@ -10,7 +10,7 @@ class TsbhPlot_EXPORT TsbhPlot:public osgGA::GUIEventHandler
 {
 public:
 	TsbhPlot();
-	TsbhPlot(osgViewer::View* view,osgEarth::MapNode* node);
+	TsbhPlot(osgViewer::View* view,osgEarth::MapNode* node, bool mercator = false);
 	void setPlot(PlotStyle* plot);
 	virtual bool handle(const osgGA::GUIEventAdapter& ea, osgGA::GUIActionAdapter& aa);
 private:
@@ -24,4 +24,5 @@ private:
 	//当前标绘类型
 	PlotStyle* plot;
 	osgEarth::MapNode* _node;
+	bool bMercator;
 };

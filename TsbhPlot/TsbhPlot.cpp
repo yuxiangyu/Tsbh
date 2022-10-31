@@ -18,7 +18,7 @@ TsbhPlot::TsbhPlot()
 	this->currentHandler = NULL;
 }
 
-TsbhPlot::TsbhPlot(osgViewer::View* view, osgEarth::MapNode* node)
+TsbhPlot::TsbhPlot(osgViewer::View* view, osgEarth::MapNode* node, bool mercator)
 {
 	this->view = view;
 	//view2d = view2;
@@ -33,6 +33,7 @@ TsbhPlot::TsbhPlot(osgViewer::View* view, osgEarth::MapNode* node)
 	this->plot = NULL;
 	//this->currentHandler1 = NULL;
 	this->currentHandler = NULL;
+	this->bMercator = mercator;
 }
 
 void TsbhPlot::setPlot(PlotStyle* plot)
@@ -80,6 +81,8 @@ void TsbhPlot::setPlot(PlotStyle* plot)
 		}
 		if (this->currentHandler)
 		{
+			DrawTool* tool = dynamic_cast<DrawTool*>(this->currentHandler.get());
+			tool->isMercator() = bMercator;
 			view->addEventHandler(this->currentHandler);
 		}
 }

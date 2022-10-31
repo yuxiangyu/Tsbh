@@ -5,6 +5,7 @@
 #include <osgEarth/IconSymbol>
 #include "FeatureEditing.h"
 #include <qdebug.h>
+#include "SysConst.h"
 
 DrawTool::DrawTool(osgEarth::MapNode* mapNode, osg::Group* drawGroup, QObject* parent)
 	: QObject(parent)
@@ -193,6 +194,10 @@ bool DrawTool::getLocationAt(osgViewer::View* view, double x, double y, double& 
         lon = lla[1];
         alt = lla[2];
 #endif
+		if (_bMercator)
+		{
+			CSysConst::mercatorTolonlat(point.x(), point.y(), lon, lat);
+		}
 		if (alt <= 0)
 			alt = 1;
         return true;
