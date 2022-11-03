@@ -9,9 +9,10 @@
 #include <osg/ShapeDrawable>
 #include <osgGA/GUIEventHandler>
 #include <math.h>
+#include "TsbhSim_global.h"
 
 //自定义回调类
-class BuildRaderCallback :public osg::NodeCallback
+class RTSSCORE_EXPORT BuildRaderCallback :public osg::NodeCallback
 {
 public:
 	BuildRaderCallback(float fRotateSpeed, float fRotateRadius, float fRotateHeight);

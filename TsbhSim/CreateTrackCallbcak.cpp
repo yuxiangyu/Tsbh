@@ -2,11 +2,10 @@
 #include "CreateTrackCallbcak.h"
 
 
-CreateTrackCallback::CreateTrackCallback(osg::Group* root, osg::MatrixTransform* scaler, float lineWidth)
+CreateTrackCallback::CreateTrackCallback(osg::Group* root, float lineWidth)
 {
 	m_proot = root;
-	m_nwidth = lineWidth;
-	m_rpmtFly = scaler;
+	m_fwidth = lineWidth;
 }
 
 CreateTrackCallback::~CreateTrackCallback()
@@ -15,7 +14,6 @@ CreateTrackCallback::~CreateTrackCallback()
 
 void CreateTrackCallback::operator()(osg::Node* node, osg::NodeVisitor* nv)
 {
-
 	osg::MatrixTransform* pmtTrans = dynamic_cast<osg::MatrixTransform*> (node);
 	if (pmtTrans)
 	{
@@ -47,7 +45,7 @@ osg::ref_ptr<osg::Geode> CreateTrackCallback::BuildTrack(osg::Vec3 m_Vec3LatPoin
 	rpGeom->setVertexArray(rpVec3Array); //设置顶点
 	rpGeom->addPrimitiveSet(new osg::DrawArrays(osg::PrimitiveSet::LINES, 0, rpVec3Array->size()));    //设置关联方式  线段
 
-	rpVec4Array->push_back(osg::Vec4f(1, 0, 0, 1.0));
+	rpVec4Array->push_back(osg::Vec4f(0, 1, 0, 1.0));
 	rpGeom->setColorArray(rpVec4Array);    //设置顶点颜色
 	rpGeom->setColorBinding(osg::Geometry::BIND_OVERALL); //设置关联方式
 
@@ -56,7 +54,7 @@ osg::ref_ptr<osg::Geode> CreateTrackCallback::BuildTrack(osg::Vec3 m_Vec3LatPoin
 	rpGeom->setUseVertexBufferObjects(true);
 
 	//设置线宽
-	osg::ref_ptr<osg::LineWidth> lw = new osg::LineWidth(m_nwidth);
+	osg::ref_ptr<osg::LineWidth> lw = new osg::LineWidth(m_fwidth);
 	rpGeom->getOrCreateStateSet()->setAttribute(lw, osg::StateAttribute::ON);
 	rpGeode->getOrCreateStateSet()->setMode(GL_LIGHTING, osg::StateAttribute::OFF);
 	rpGeom->getOrCreateStateSet()->setMode(GL_BLEND, osg::StateAttribute::ON);    //混合色

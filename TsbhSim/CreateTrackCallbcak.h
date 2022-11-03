@@ -13,12 +13,13 @@
 #include <iostream>
 #include <fstream>
 #include <osg/LineWidth>
+#include "TsbhSim_global.h"
 
 //自定义轨道回调类
-class CreateTrackCallback :public osg::NodeCallback
+class RTSSCORE_EXPORT CreateTrackCallback :public osg::NodeCallback
 {
 public:
-	CreateTrackCallback(osg::Group* root, osg::MatrixTransform* scaler, float ribbonWidth);
+	CreateTrackCallback(osg::Group* root, float ribbonWidth);
 	~CreateTrackCallback();
 
 	osg::ref_ptr<osg::Geode> BuildTrack(osg::Vec3 m_Vec3LatPoint, osg::Vec3 m_Vec3CurPoint);
@@ -27,15 +28,7 @@ public:
 	osg::Vec3 m_Vec3LastPosition;
 	//当前模型位置坐标点
 	osg::Vec3 m_Vec3CurPosition;
-
-
 	osg::observer_ptr<osg::Geometry> m_opGeometryRibbon;
-
-	osg::ref_ptr<osg::MatrixTransform> m_rpmtFly;
-
 	osg::Group* m_proot;
-
-	int m_nsize;
-
-	int m_nwidth;
+	float m_fwidth;
 };

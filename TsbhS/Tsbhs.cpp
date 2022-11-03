@@ -13,6 +13,7 @@
 #include "MeasureArea.h"
 #include "toolhandle.h"
 #include "animationLineNode.h"
+#include <osgEarth/Viewpoint>
 
 
 Tsbhs::Tsbhs(QWidget *parent) : QMainWindow(parent)
@@ -315,6 +316,8 @@ void Tsbhs::create3Dmap() {
 	line->setShiftsPerSecond(-30.0);
 	line->setLineWidth(2);
 	geo3dps->getInstance()->getView()->get3dGroup()->addChild(line);
+
+	addAirport();
 }
 
 //窗体改变大小事件
@@ -485,4 +488,55 @@ void Tsbhs::on_action2D3Dlink_triggered()
 	{
 		geo3dps->getInstance()->getView()->disable2D3DLinkage();
 	}
+}
+
+// test
+// 加载飞机
+void Tsbhs::addAirport()
+{
+	if (!tsbhsim)
+	{
+		tsbhsim = new TsbhSim(geo3dps->getView()->get3DSceneMapNode());
+	}
+	// 加载飞机模型
+	osg::Matrixd mtTemp = osg::Matrixd::scale(100, 100, 100)
+		* osg::Matrixd::rotate(3 * osg::PI_4, osg::Vec3(0, 0, 1));
+	MatrixTransform* mtFlyself = tsbhsim->LoadEntity("D:/Work/709/shuh/Data/Model/B737.ive", mtTemp);
+	if (!mtFlyself)
+	{
+		return;
+	}
+	// 创建雷达
+	mtFlyself->addChild(tsbhsim->BuildRader(2, 500, 300).get());
+
+	MatrixTransform* mtFly = new osg::MatrixTransform;
+	mtFly->addChild(mtFlyself);
+	geo3dps->getInstance()->getView()->get3dGroup()->addChild(mtFly);
+	//设置飞机矩阵
+	/*geo3dps->getView()->get3DSceneMapNode()->getMapSRS()->getEllipsoid()
+		->computeLocalToWorldTransformFromLatLongHeight(osg::DegreesToRadians(0.0), osg::DegreesToRadians(0.0), 101000, mtTemp);
+	mtTemp.preMult(osg::Matrixd::scale(osg::Vec3(10, 10, 10)));
+	mtFly->setMatrix(mtTemp);*/
+	//设置飞机视角跟随 并设置飞行路径
+	osg::ref_ptr<osg::Vec4Array> rpvaTemp = new osg::Vec4Array;
+	rpvaTemp->push_back(osg::Vec4(0.0, 0.0, 101000, 100000));
+	rpvaTemp->push_back(osg::Vec4(10, 0.0, 102000, 100000));
+	rpvaTemp->push_back(osg::Vec4(20.0, 0.0, 103000, 100000));
+	rpvaTemp->push_back(osg::Vec4(30.0, 0.0, 104000, 100000));
+	rpvaTemp->push_back(osg::Vec4(40.0, 0.0, 105000, 100000));
+	rpvaTemp->push_back(osg::Vec4(50.0, 0.0, 106000, 100000));
+	rpvaTemp->push_back(osg::Vec4(60.0, 0.0, 107000, 100000));
+	rpvaTemp->push_back(osg::Vec4(70.0, 0.0, 108000, 100000));
+
+	osg::AnimationPath* animationPath = tsbhsim->CreateAnimationPath(rpvaTemp, osg::Vec3d(10, 10, 10));
+	mtFly->setUpdateCallback(new osg::AnimationPathCallback(animationPath, 0.0, 1.0));
+	//设置视角跟踪
+	osgEarth::Viewpoint vp("current", 0.0, 0.0, 0, 24.261, -80, 251000);
+	//vp.setNode(mtFly);
+	//geo3dps->getInstance()->getView()->get3dManipulator()->getViewpoint().setNode(nodeAirFly);
+	//geo3dps->getInstance()->getView()->get3dManipulator()->clearViewpoint();
+	geo3dps->getInstance()->getView()->get3dManipulator()->setViewpoint(vp);
+	geo3dps->getInstance()->getView()->get3dGroup()->addChild(tsbhsim->BuildRibbon(9, mtFly, 1).get());
+	// 创建飞机历史航迹
+	geo3dps->getInstance()->getView()->get3dGroup()->addChild(tsbhsim->BuildHistoryRoute(mtFly, 1));
 }

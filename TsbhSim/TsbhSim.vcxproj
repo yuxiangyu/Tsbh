@@ -95,18 +95,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnimationLineNode.cpp" />
+    <ClCompile Include="BuildRaderCallback.cpp" />
     <ClCompile Include="CoordinateConverter.cpp" />
     <ClCompile Include="CoordinateSystem.cpp" />
+    <ClCompile Include="CreateTrackCallbcak.cpp" />
     <ClCompile Include="Locator.cpp" />
     <ClCompile Include="MultiFrameCoordinate.cpp" />
+    <ClCompile Include="TrailerCallback.cpp" />
+    <ClCompile Include="TsbhSim.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationLineNode.h" />
+    <ClInclude Include="BuildRaderCallback.h" />
     <ClInclude Include="Coordinate.h" />
     <ClInclude Include="CoordinateConverter.h" />
     <ClInclude Include="CoordinateSystem.h" />
+    <ClInclude Include="CreateTrackCallbcak.h" />
     <ClInclude Include="Locator.h" />
     <ClInclude Include="MultiFrameCoordinate.h" />
+    <ClInclude Include="TrailerCallback.h" />
+    <ClInclude Include="TsbhSim.h" />
     <ClInclude Include="TsbhSim_global.h" />
   </ItemGroup>
   <ItemGroup>

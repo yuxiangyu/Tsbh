@@ -5,12 +5,13 @@
 #include <osg/ShapeDrawable>
 #include <osgGA/GUIEventHandler>
 #include <math.h>
+#include "TsbhSim_global.h"
 
 // ·ÉÐÐ²Ê´ø
-class TrailerCallback :public osg::NodeCallback
+class RTSSCORE_EXPORT TrailerCallback :public osg::NodeCallback
 {
 public:
-	TrailerCallback(osg::Geometry* ribbon, int size, int ribbonWidth);
+	TrailerCallback(osg::Geometry* ribbon, int size, float ribbonWidth);
 
 	~TrailerCallback();
 
@@ -19,6 +20,6 @@ public:
 private:
 	osg::observer_ptr<osg::Geometry> m_opGeometryRibbon;
 	int m_nsize;
-	int m_nwidth;
+	float m_fwidth;
 };
 

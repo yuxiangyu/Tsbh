@@ -8,6 +8,7 @@
 #include "ui_Tsbhs.h"
 #include "toolhandle.h"
 #include "TsbhPlot.h"
+#include "TsbhSim.h"
 
 class Tsbhs :  public QMainWindow
 {
@@ -25,6 +26,7 @@ private:
 	TsbhPlot* tsbhplot_3d;
 	ToolHandle* tsbhtool_3d;
 	TsbhPlot* tsbhplot_2d;
+	TsbhSim* tsbhsim;
 	int framerate;
 	QTimer*                             timer_;
 	//osg::ref_ptr<simVis::ViewManager>   viewMan_;
@@ -57,6 +59,9 @@ private:
 	//void removeAllDock();
 	//void showDock();
 	QAction * currentBiaoHui = nullptr;
+
+	// test
+	void addAirport();
 public slots:
 	//void open3dview();
 	//void open2dview();

@@ -64,5 +64,17 @@
     <ClCompile Include="MultiFrameCoordinate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TrailerCallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreateTrackCallbcak.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildRaderCallback.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TsbhSim.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

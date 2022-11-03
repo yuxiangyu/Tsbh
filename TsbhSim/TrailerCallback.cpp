@@ -2,11 +2,11 @@
 #include "TrailerCallback.h"
 
 
-TrailerCallback::TrailerCallback(osg::Geometry* ribbon, int size, int ribbonWidth)
+TrailerCallback::TrailerCallback(osg::Geometry* ribbon, int size, float ribbonWidth)
 {
 	m_opGeometryRibbon = ribbon;
 	m_nsize = size;
-	m_nwidth = ribbonWidth;
+	m_fwidth = ribbonWidth;
 }
 
 void TrailerCallback::operator()(osg::Node* node, osg::NodeVisitor* nv)
@@ -23,8 +23,8 @@ void TrailerCallback::operator()(osg::Node* node, osg::NodeVisitor* nv)
 			(*pvec3Vertex)[i + 1] = (*pvec3Vertex)[i + 3];
 		}
 
-		(*pvec3Vertex)[m_nsize - 2] = osg::Vec3(0.0f, -m_nwidth, 0.0f)* mtx;
-		(*pvec3Vertex)[m_nsize - 1] = osg::Vec3(0.0f, m_nwidth, 0.0f)* mtx;
+		(*pvec3Vertex)[m_nsize - 2] = osg::Vec3(0.0f, -m_fwidth, 0.0f)* mtx;
+		(*pvec3Vertex)[m_nsize - 1] = osg::Vec3(0.0f, m_fwidth, 0.0f)* mtx;
 
 		pvec3Vertex->dirty();
 		m_opGeometryRibbon->dirtyBound();
