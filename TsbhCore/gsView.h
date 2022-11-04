@@ -75,6 +75,7 @@ public:
 	osg::LOD *get2DLod() { return lod_2d; }
 	osg::Matrix& getModelMatrix(string name);
 	osgEarth::EarthManipulator* get2dManipulator(){ return mainip2d; }
+	osgEarth::EarthManipulator* get3dManipulator() { return mainip3d; }
 
 	void set2DViewpoint(osgEarth::Viewpoint vp);
 	void clearGroudObjects();
