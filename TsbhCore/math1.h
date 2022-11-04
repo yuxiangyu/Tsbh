@@ -484,9 +484,9 @@ public:
   static void ecefEulerToEnuRotMatrix(const SimVec3& in, osg::Matrix& out);
  
 
-  static double sodanoInverse(const double refLat, const double refLon, const double refAlt, const double lat, const double lon, double *azfwd, double *azbck);
+  static double sodanoInverse(const double refLat, const double refLon, const double refAlt, const double lat, const double lon, double *azfwd, double *azbck=NULL);
   
 
-  static void sodanoDirect(const double refLat, const double refLon, const double refAlt, const double dist, const double azfwd, double *latOut, double *lonOut, double *azbck);
+  static void sodanoDirect(const double refLat, const double refLon, const double refAlt, const double dist, const double azfwd, double *latOut, double *lonOut, double *azbck=NULL);
   };
 #endif /* SIMCORE_CALC_MATH_H */

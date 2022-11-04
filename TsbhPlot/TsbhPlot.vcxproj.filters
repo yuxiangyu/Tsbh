@@ -98,6 +98,9 @@
     <ClInclude Include="TsbhPlot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DrawRunwayTool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TsbhPlot.cpp">
@@ -185,6 +188,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ComplexBoxDrawable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawRunwayTool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

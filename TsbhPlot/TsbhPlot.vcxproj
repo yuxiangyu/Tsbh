@@ -109,6 +109,7 @@
     <ClCompile Include="DrawLineTool.cpp" />
     <ClCompile Include="DrawPolygonTool.cpp" />
     <ClCompile Include="DrawRectangleTool.cpp" />
+    <ClCompile Include="DrawRunwayTool.cpp" />
     <ClCompile Include="DrawTextTool.cpp" />
     <ClCompile Include="DrawTool.cpp" />
     <ClCompile Include="FeatureEditing.cpp" />
@@ -138,7 +139,11 @@
     <ClInclude Include="DrawLineTool.h" />
     <ClInclude Include="DrawPolygonTool.h" />
     <ClInclude Include="DrawRectangleTool.h" />
-    <QtMoc Include="DrawTool.h" />
+    <QtMoc Include="DrawTool.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(third)\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;.\..\TsbhCore</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore</IncludePath>
+    </QtMoc>
+    <ClInclude Include="DrawRunwayTool.h" />
     <ClInclude Include="DrawTextTool.h" />
     <ClInclude Include="GeoDiagonalArrow.h" />
     <ClInclude Include="GeoDoubleArrow.h" />
