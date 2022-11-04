@@ -63,6 +63,7 @@ public:
 		DRAW_GEOLUNE, // 弓形
 		DRAW_PARALLELSEARCH, //平行搜寻区
 		DRAW_SECTORSEARCH, //扇形搜寻区
+		DRAW_RUNWAY,//跑道
 	};
 
     virtual DrawType getType() = 0;

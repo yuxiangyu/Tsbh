@@ -31,6 +31,7 @@ enum ToolType
 	MARK,			// 点标记
 	GEOGETHER,		//腰子图
 	GEOPOSITION,	//发射点位
+	RUNWAY,
 };
 
 enum JBModelType

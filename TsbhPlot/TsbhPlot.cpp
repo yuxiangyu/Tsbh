@@ -8,6 +8,7 @@
 #include "GeoStraightArrow.h"
 #include "DrawCircleTool.h"
 #include <osgEarth/GLUtils>
+#include "DrawRunwayTool.h"
 //...
 
 
@@ -76,6 +77,10 @@ void TsbhPlot::setPlot(PlotStyle* plot)
 			case DrawTool::DrawType::DRAW_STRAIGHTARROW:
 				//this->currentHandler = new GeoStraightArrow(mapNode, annGroup_3D);
 				this->currentHandler = new GeoStraightArrow(_node, group3dplot);
+				break;
+			case DrawTool::DrawType::DRAW_RUNWAY:
+				//this->currentHandler = new GeoStraightArrow(mapNode, annGroup_3D);
+				this->currentHandler = new DrawRunwayTool(_node, group3dplot);
 				break;
 			}
 		}
