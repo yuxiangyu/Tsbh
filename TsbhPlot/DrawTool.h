@@ -64,6 +64,7 @@ public:
 		DRAW_PARALLELSEARCH, //平行搜寻区
 		DRAW_SECTORSEARCH, //扇形搜寻区
 		DRAW_RUNWAY,//跑道
+		DRAW_EIGHT,
 	};
 
     virtual DrawType getType() = 0;
@@ -96,7 +97,6 @@ public:
 	struct NodeInfo getNodeinfos();
 
 	bool &isMercator() { return _bMercator; }
-
 public:
     // 获取点所在地理坐标
     bool getLocationAt(osgViewer::View* view, double x, double y, double& lon, double& lat, double& alt);

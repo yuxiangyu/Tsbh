@@ -17,7 +17,8 @@ public:
 	void draw(std::vector<osg::Vec3d> points);
 
     std::vector<osg::Vec2> calculateParts(const std::vector<osg::Vec2>& ctrlPts);
-
+	//virtual void resetDraw() {};
+	virtual void remove() {};
 private:
     osgEarth::Style _polygonStyle;
 	osg::ref_ptr<osgEarth::FeatureNode>_featureNode;

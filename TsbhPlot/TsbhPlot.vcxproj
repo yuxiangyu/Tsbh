@@ -103,6 +103,7 @@
     <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="ComplexBoxDrawable.cpp" />
     <ClCompile Include="DrawCircleTool.cpp" />
+    <ClCompile Include="DrawEightTool.cpp" />
     <ClCompile Include="DrawGeoPoint.cpp" />
     <ClCompile Include="DrawImageTool.cpp" />
     <ClCompile Include="DrawJBModeTool.cpp" />
@@ -133,6 +134,7 @@
     <ClInclude Include="CameraDevice.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="DrawCircleTool.h" />
+    <ClInclude Include="DrawEightTool.h" />
     <ClInclude Include="DrawGeoPoint.h" />
     <ClInclude Include="DrawImageTool.h" />
     <ClInclude Include="DrawJBModeTool.h" />
