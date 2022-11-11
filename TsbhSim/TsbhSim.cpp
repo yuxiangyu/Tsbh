@@ -235,6 +235,6 @@ osg::ref_ptr<osg::Group> TsbhSim::BuildHistoryRoute(osg::MatrixTransform* scaler
 {
 	osg::ref_ptr<osg::Group> rpgroup = new osg::Group;
 
-	scaler->addUpdateCallback(new CreateTrackCallback(rpgroup, lineWidth));
+	scaler->addUpdateCallback(new CreateTrackCallback(rpgroup, m_mapNode->getMapSRS(), lineWidth));
 	return rpgroup;
 }

@@ -2,10 +2,20 @@
 #include "CreateTrackCallbcak.h"
 
 
-CreateTrackCallback::CreateTrackCallback(osg::Group* root, float lineWidth)
+CreateTrackCallback::CreateTrackCallback(osg::Group* root, const osgEarth::SpatialReference* srs, float lineWidth)
+	:m_proot(root)
+	, m_pMapSRS(srs)
+	, m_fwidth(lineWidth)
+	, bStart(false)
 {
-	m_proot = root;
-	m_fwidth = lineWidth;
+	//创建运动线
+	m_rpLine = new AnimatedLineNode();
+
+	m_rpLine->setColor1(osgEarth::Color::Red); // 
+	m_rpLine->setColor2(osg::Vec4());   // transparent
+	m_rpLine->setShiftsPerSecond(30.0);
+	m_rpLine->setLineWidth(lineWidth);
+	root->addChild(m_rpLine.get());
 }
 
 CreateTrackCallback::~CreateTrackCallback()
@@ -18,12 +28,26 @@ void CreateTrackCallback::operator()(osg::Node* node, osg::NodeVisitor* nv)
 	if (pmtTrans)
 	{
 		osg::Matrix mtx = pmtTrans->getMatrix();
-		m_Vec3CurPosition = mtx.getTrans();
-
-		m_proot->addChild(BuildTrack(m_Vec3LastPosition, m_Vec3CurPosition));
+		osg::Vec3d vec3Pos = mtx.getTrans();
+		// XYZ转经纬度
+		osg::Vec3d vecLLH;
+		m_pMapSRS->getEllipsoid()->convertXYZToLatLongHeight(vec3Pos.x(), vec3Pos.y(), vec3Pos.z(), vecLLH.y(), vecLLH.x(), vecLLH.z());
+		vecLLH.x() = osg::RadiansToDegrees(vecLLH.x());
+		vecLLH.y() = osg::RadiansToDegrees(vecLLH.y());
+		if (!bStart)
+		{
+			m_startPoint = osgEarth::GeoPoint(m_pMapSRS->getGeographicSRS(), vecLLH);
+			bStart = true;
+		}
+		else
+		{
+			osgEarth::GeoPoint endPoint(m_pMapSRS->getGeographicSRS(), vecLLH);
+			m_rpLine->setEndPoints(m_startPoint, endPoint);
+		}
+		//m_proot->addChild(BuildTrack(m_Vec3LastPosition, m_Vec3CurPosition));
 	}
 	traverse(node, nv);
-	m_Vec3LastPosition = m_Vec3CurPosition;
+	//m_Vec3LastPosition = m_Vec3CurPosition;
 
 }
 
