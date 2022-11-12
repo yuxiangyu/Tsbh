@@ -23,6 +23,9 @@ public:
 	// 创建彩带
 	osg::ref_ptr<osg::Geode> BuildRibbon(int size, osg::MatrixTransform* scaler, float ribbonWidth);
 
+	// 创建飞行尾迹
+	osg::MatrixTransform* BuildTail(osg::MatrixTransform* scaler, const osg::Vec3 &pos);
+
 	// 创建飞机历史航迹
 	osg::ref_ptr<osg::Group> BuildHistoryRoute(osg::MatrixTransform* scaler, float lineWidth);
 

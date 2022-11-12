@@ -202,8 +202,8 @@ osg::ref_ptr<osg::Geode> TsbhSim::BuildRibbon(int size, osg::MatrixTransform* sc
 
 		float falpha = sinf(osg::PI * (float)i / (float)size);
 
-		(*rpvec4Color)[i] = osg::Vec4(osg::Vec3f(1, 0, 0), falpha);
-		(*rpvec4Color)[i + 1] = osg::Vec4(osg::Vec3f(1, 0, 0), falpha);
+		(*rpvec4Color)[i] = osg::Vec4(osg::Vec3f(0, 1, 0), falpha);
+		(*rpvec4Color)[i + 1] = osg::Vec4(osg::Vec3f(0, 1, 0), falpha);
 	}
 	//场景数据动态改变
 	rpgeom->setDataVariance(osg::Object::DYNAMIC);
@@ -229,6 +229,18 @@ osg::ref_ptr<osg::Geode> TsbhSim::BuildRibbon(int size, osg::MatrixTransform* sc
 	scaler->addUpdateCallback(new TrailerCallback(rpgeom, size, ribbonWidth));
 
 	return rpgeode;
+}
+
+// 创建飞行尾迹
+osg::MatrixTransform* TsbhSim::BuildTail(osg::MatrixTransform* scaler, const osg::Vec3 &pos)
+{
+	osg::ref_ptr<osgParticle::FireEffect> fire = new osgParticle::FireEffect(pos, 5000, 1);
+	fire->setWind(osg::Vec3(1.0f, 0.0f, 0.0f));
+	osg::MatrixTransform* mtfire = new osg::MatrixTransform;
+	mtfire->setMatrix(osg::Matrix::rotate(osg::PI_2, osg::X_AXIS));
+	mtfire->addChild(fire);
+	scaler->addUpdateCallback(new TrailerCallback(fire));
+	return mtfire;
 }
 
 osg::ref_ptr<osg::Group> TsbhSim::BuildHistoryRoute(osg::MatrixTransform* scaler, float lineWidth) 
