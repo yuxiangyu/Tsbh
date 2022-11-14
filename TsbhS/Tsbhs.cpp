@@ -14,7 +14,7 @@
 #include "toolhandle.h"
 #include "animationLineNode.h"
 #include <osgEarth/Viewpoint>
-
+#include "shpPointModelLayer.h"
 
 Tsbhs::Tsbhs(QWidget *parent) : QMainWindow(parent)
 
@@ -318,6 +318,13 @@ void Tsbhs::create3Dmap() {
 	geo3dps->getInstance()->getView()->get3dGroup()->addChild(line);
 
 	addAirport();
+
+	/*
+	shpPointModelLayer* layer1 = new shpPointModelLayer("ff", "F:\\documents\\709\\Maps\\shapefile\\point\\capital_point.shp");
+	layer1->imagePath = "F:\\Projects\\osgearth-osgearth-3.1\\data\\placemark32.png";
+	layer1->textEncoding = "gb2312";
+	layer1->addToScene(geo3dps->getInstance()->getView()->get3DSceneMapNode());
+	*/
 }
 
 //窗体改变大小事件
@@ -545,4 +552,6 @@ void Tsbhs::addAirport()
 	group3D->addChild(tsbhsim->BuildTail(mtFly, osg::Vec3(0.0, 0.0, 101000)));
 	// 创建飞机历史航迹
 	group3D->addChild(tsbhsim->BuildHistoryRoute(mtFly, 1));
+
+	
 }
