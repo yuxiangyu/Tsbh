@@ -65,6 +65,9 @@
     <ClCompile Include="Format1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="shpPointModelLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="astro.h">
@@ -107,6 +110,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Format1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shpPointModelLayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

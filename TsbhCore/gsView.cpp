@@ -30,9 +30,11 @@
 //shp加载测试
 #include <osgEarth/OGRFeatureSource>
 #include <osgEarth/FeatureImageLayer>
+#include <osgEarth/FeatureDisplayLayout>
 
 //wmts
 #include <osgEarth/ImageLayer>
+#include <osgEarth/StyleSheet>
 
 //#include "MyGISServer.h"
 
@@ -667,6 +669,9 @@ void gsView::addLayer(zLayer* layer)
 		//将要素的路径添加到图层里
 		osgEarth::FeatureImageLayer* layer = new osgEarth::FeatureImageLayer();
 		layer->setFeatureSource(features);
+		
+		FeatureDisplayLayout layout;
+		//layout.tileSize()=
 		//将style风格加载到图层中
 		osgEarth::StyleSheet* sheet = new osgEarth::StyleSheet();
 		sheet->addStyle(style);

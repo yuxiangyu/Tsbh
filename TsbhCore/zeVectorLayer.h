@@ -20,7 +20,7 @@ public:
 	//¿í¶È
 	double linewidth;
 	//ÇÐÆ¬·¶Î§
-	double maxrange;
+	double maxrange=10e6;
 
 	int index;
 	std::string input;

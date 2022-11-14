@@ -105,6 +105,7 @@
     <ClCompile Include="Math1.cpp" />
     <ClCompile Include="QinxieModelLoader.cpp" />
     <ClCompile Include="RtssCore.cpp" />
+    <ClCompile Include="shpPointModelLayer.cpp" />
     <ClCompile Include="SysConst.cpp" />
     <ClCompile Include="transcoder.cpp" />
     <ClCompile Include="gsView.cpp" />
@@ -125,6 +126,7 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(third)\include;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtOpenGL</IncludePath>
     </QtMoc>
     <ClInclude Include="rtsscore_global.h" />
+    <ClInclude Include="shpPointModelLayer.h" />
     <ClInclude Include="Vec3.h" />
     <ClInclude Include="zeVectorLayer.h" />
     <ClInclude Include="zLayer.h" />
