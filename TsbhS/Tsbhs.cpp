@@ -15,6 +15,7 @@
 #include "animationLineNode.h"
 #include <osgEarth/Viewpoint>
 #include "shpPointModelLayer.h"
+#include "shpLineModelLayer.h"
 
 Tsbhs::Tsbhs(QWidget *parent) : QMainWindow(parent)
 
@@ -332,6 +333,9 @@ void Tsbhs::create3Dmap() {
 	layer2->maxrange = 10e5*3;
 	layer2->addToScene(geo3dps->getInstance()->getView()->get2DSceneMapNode());
 	
+
+	/*shpLineModelLayer* layer1 = new shpLineModelLayer("province_polyline", "D:/Work/709/shuh/Maps/shapefile/polyline/province_polyline.shp");
+	layer1->addToScene(geo3dps->getInstance()->getView()->get2DSceneMapNode());*/
 }
 
 //窗体改变大小事件
