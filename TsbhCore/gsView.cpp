@@ -305,7 +305,7 @@ void gsView::make2dMap()
 	osm->setProfile(Profile::create("spherical-mercator"));
 #endif
 
-	map->addLayer(osm);
+	//map->addLayer(osm);
 
 	TerrainOptions terrainOptions;
 	terrainOptions.rangeMode() = osg::LOD::PIXEL_SIZE_ON_SCREEN;

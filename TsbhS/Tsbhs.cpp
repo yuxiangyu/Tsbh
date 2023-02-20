@@ -319,12 +319,19 @@ void Tsbhs::create3Dmap() {
 
 	addAirport();
 
-	/*
+	
 	shpPointModelLayer* layer1 = new shpPointModelLayer("ff", "F:\\documents\\709\\Maps\\shapefile\\point\\capital_point.shp");
 	layer1->imagePath = "F:\\Projects\\osgearth-osgearth-3.1\\data\\placemark32.png";
 	layer1->textEncoding = "gb2312";
-	layer1->addToScene(geo3dps->getInstance()->getView()->get3DSceneMapNode());
-	*/
+	layer1->addToScene(geo3dps->getInstance()->getView()->get2DSceneMapNode());
+
+
+	shpPointModelLayer* layer2 = new shpPointModelLayer("ff", "F:\\documents\\709\\Maps\\shapefile\\point\\county_point.shp");
+	layer2->imagePath = "F:\\Projects\\osgearth-osgearth-3.1\\data\\placemark32.png";
+	layer2->textEncoding = "gb2312";
+	layer2->maxrange = 10e5*3;
+	layer2->addToScene(geo3dps->getInstance()->getView()->get2DSceneMapNode());
+	
 }
 
 //窗体改变大小事件
